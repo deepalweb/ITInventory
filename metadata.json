@@ -1,0 +1,5 @@
+{
+  "name": "IT Inventory HQ",
+  "description": "An IT inventory management dashboard to track devices, repairs, and financials. Includes an AI assistant for generating reports.",
+  "requestFramePermissions": []
+}
