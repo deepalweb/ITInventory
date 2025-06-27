@@ -1,6 +1,7 @@
 import express, { Application, Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
 import deviceRoutes from './routes/deviceRoutes';
 import { testConnection } from './config/sqlDb';
 
@@ -20,9 +21,12 @@ app.use(express.json());
 // Routes
 app.use('/devices', deviceRoutes);
 
-// Basic route for testing
-app.get('/', (req: Request, res: Response) => {
-  res.json({ message: 'IT Inventory API is running' });
+// Serve static files from frontend build
+app.use(express.static(path.join(__dirname, '../../dist')));
+
+// Fallback to index.html for SPA routes
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../dist/index.html'));
 });
 
 // 404 handler
