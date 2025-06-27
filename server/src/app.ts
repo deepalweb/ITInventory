@@ -18,8 +18,8 @@ testConnection();
 app.use(cors());
 app.use(express.json());
 
-// Routes
-app.use('/devices', deviceRoutes);
+// Serve device API at /api/devices
+app.use('/api/devices', deviceRoutes);
 
 // Serve static files from frontend build
 app.use(express.static(path.join(__dirname, '../../dist')));
